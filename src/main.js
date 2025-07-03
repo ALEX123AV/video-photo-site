@@ -1,6 +1,12 @@
+
 import './style.css'
 
 document.querySelector('#app').innerHTML = `
-  <h1>Привет! Это сайт видеосъёмки и фотосессий</h1>
-  <p>Скоро здесь появится больше информации!</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Профессиональная видеосъёмка и фотосессии</h1>
+      <p>Мероприятия • Матчи • Свадьбы • Блоги</p>
+      <a href="#contacts" class="cta-button">Заказать съёмку</a>
+    </div>
+  </section>
 `;
