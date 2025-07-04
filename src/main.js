@@ -1,8 +1,7 @@
 import './style.css';
 
-const publicKey = 'https://disk.yandex.ru/d/qX0C9AQg0xDRDg';
-const imageFiles = ['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg','photo5.jpg','photo6.jpg'];
-const videoFiles = ['video1.mp4','video2.mp4','video3.mp4','video4.mp4'];
+const publicKey = 'https://disk.yandex.ru/d/b-Dv09HySVT-6A';
+const imageFiles = ['photo1.jpg','photo2.jpg','photo3.jpg'];
 
 async function getHref(path) {
   const api = `https://cloud-api.yandex.net/v1/disk/public/resources/download?public_key=${encodeURIComponent(publicKey)}&path=/${path}`;
