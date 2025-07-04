@@ -1,21 +1,24 @@
 import './style.css';
 
-const publicKey = 'https://disk.yandex.ru/d/b-Dv09HySVT-6A';
-const imageFiles = ['photo1.jpg','photo2.jpg','photo3.jpg'];
+const imageLinks = [
+  'DIRECT_IMAGE_URL_1', // замените на прямую ссылку из поля href для photo1.jpg
+  'DIRECT_IMAGE_URL_2', // для photo2.jpg
+  'DIRECT_IMAGE_URL_3',
+  'DIRECT_IMAGE_URL_4',
+  'DIRECT_IMAGE_URL_5',
+  'DIRECT_IMAGE_URL_6'
+];
 
-async function getHref(path) {
-  const api = `https://cloud-api.yandex.net/v1/disk/public/resources/download?public_key=${encodeURIComponent(publicKey)}&path=/${path}`;
-  const res = await fetch(api);
-  const json = await res.json();
-  return json.href;
-}
+const videoLinks = [
+  'DIRECT_VIDEO_URL_1', // замените на href для video1.mp4
+  'DIRECT_VIDEO_URL_2',
+  'DIRECT_VIDEO_URL_3',
+  'DIRECT_VIDEO_URL_4'
+];
 
-async function init() {
-  // ждём прямые ссылки на все файлы
-  const imageLinks = await Promise.all(imageFiles.map(f => getHref(f)));
-  const videoLinks = await Promise.all(videoFiles.map(f => getHref(f)));
-
+function render() {
   document.querySelector('#app').innerHTML = `
+
     <section class="hero">
       <div class="hero-content">
         <h1>Профессиональная видеосъёмка и фотосессии</h1>
@@ -49,8 +52,12 @@ async function init() {
     <section id="portfolio" class="portfolio">
       <h2>Наши работы</h2>
       <div class="gallery">
-        ${imageLinks.map((href,i) => `<img src="${href}" alt="Фото ${i+1}">`).join('')}
-        ${videoLinks.map((href,i) => `<video src="${href}" controls></video>`).join('')}
+        ${imageLinks.map((url, i) =>
+          `<img src="${url}" alt="Фото ${i+1}">`
+        ).join('')}
+        ${videoLinks.map((url, i) =>
+          `<video src="${url}" controls type="video/mp4"></video>`
+        ).join('')}
       </div>
     </section>
 
@@ -63,7 +70,8 @@ async function init() {
         <button type="submit" class="cta-button">Отправить</button>
       </form>
     </section>
+
   `;
 }
 
-init();
+render();
